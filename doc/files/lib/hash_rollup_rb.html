@@ -1,0 +1,120 @@
+
+<html><head>
+  <title>File: hash_rollup.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript" language="JavaScript">
+  <!--
+  function popCode(url) {
+    parent.frames.source.location = url
+  }
+  //-->
+  </script>
+</head>
+<body bgcolor="white">
+
+
+<table width="100%">
+ <tr class="title-row">
+ <td><table width="100%"><tr>
+   <td class="big-title-font" colspan="2"><font size="-3"><b>File</b><br /></font>hash_rollup.rb</td>
+   <td align="right"><table cellspacing="0" cellpadding="2">
+         <tr>
+           <td  class="small-title-font">Path:</td>
+           <td class="small-title-font">lib/hash_rollup.rb
+           </td>
+         </tr>
+         <tr>
+           <td class="small-title-font">Modified:</td>
+           <td class="small-title-font">Wed Mar 11 19:55:35 -0700 2009</td>
+         </tr>
+        </table>
+    </td></tr></table></td>
+  </tr>
+</table><br />
+  <!-- banner header -->
+
+
+<div class="indent">
+<div class="description">
+<h1>Ruby Gem: Hash#rollup</h1>
+<table>
+<tr><td valign="top">Author:</td><td>Joel Parker Henderson, joelparkerhenderson@gmail.com
+
+</td></tr>
+<tr><td valign="top">Copyright:</td><td>Copyright (c) 2007-2009 Joel Parker Henderson
+
+</td></tr>
+<tr><td valign="top">License:</td><td>CreativeCommons License, Non-commercial Share Alike
+
+</td></tr>
+<tr><td valign="top">License:</td><td>LGPL, GNU Lesser General Public License
+
+</td></tr>
+</table>
+<p>
+<a href="../../classes/HashRollup.html">HashRollup</a> aggregates value for
+a hash of hashes, for example to help calculate subtotals grouped by key.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  h={'a'=&gt;{},'b'=&gt;{},'c'=&gt;{}}
+  h['a']['x']=1
+  h['a']['y']=2
+  h['a']['z']=3
+  h['b']['x']=4
+  h['b']['y']=5
+  h['b']['z']=6
+  h['c']['x']=7
+  h['c']['y']=8
+  h['c']['z']=9
+  h.rollup =&gt; {&quot;a&quot;=&gt;[1,2,3],&quot;b&quot;=&gt;[4,5,6],&quot;c&quot;=&gt;[7,8,9]}
+</pre>
+<h1>Calculating subtotals</h1>
+<p>
+The rollup method is especially useful for calculating subtotals by key.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  r = h.rollup
+  r['a'].sum =&gt; 6
+  r['b'].sum =&gt; 15
+  r['c'].sum =&gt; 24
+</pre>
+<h1>Block customization</h1>
+<p>
+You can provide a block that will be called for the rollup items.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  h.rollup{|items| items.max } =&gt; {&quot;a&quot;=&gt;3,&quot;b&quot;=&gt;6,&quot;c&quot;=&gt;9}
+  h.rollup{|items| items.join(&quot;/&quot;) } =&gt; {&quot;a&quot;=&gt;&quot;1/2/3&quot;,&quot;b&quot;=&gt;&quot;4/5/6&quot;,&quot;c&quot;=&gt;&quot;7/8/9&quot;}
+  h.rollup{|items| items.inject{|sum,x| sum+=x } } =&gt; {&quot;a&quot;=&gt;6,&quot;b&quot;=&gt;15,&quot;c&quot;=&gt;24}
+</pre>
+
+</div>
+</div>
+
+
+
+
+
+    <div class="indent">
+    <div id="section">
+
+
+
+  
+
+  <!-- method descriptions -->
+
+
+</div><!-- indent -->
+</body>
+</html>
